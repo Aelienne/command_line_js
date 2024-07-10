@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <title>Command Invite</title>
+  </head>
+  <body>
+    <div class="command_line">
+      <div class="command_line_header">
+        <div class="button_fake_close">x</div>
+        <div class="button_fake_minimize">■</div>
+        <div class="button_fake_zoom">-</div>
+      </div>
+      <div class="command_line_body">
+        <div class="command_line_banner">
+          <div class="command_line_author">Florian BYNENS</div>
+          <p>
+            <!-- ici mettre les consignes pour l'utilisateur -->
+            Welcome to my <code>COMMAND-LINE INTERPRETER</code>
+          </p>
+        </div>
+        <div id="command_line">
+          <input type="text" id="input" />
+        </div>
+      </div>
+    </div>
+    <script type="module" defer src="script.js"></script>
+  </body>
+</html>
