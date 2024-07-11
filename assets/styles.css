@@ -4,7 +4,6 @@
 }
 * body {
   overflow: hidden;
-  background: rgb(238, 174, 202);
   background: radial-gradient(circle, rgb(238, 174, 202) 0%, rgb(148, 187, 233) 100%);
   height: 100vh;
 }
@@ -23,29 +22,47 @@
 * body div.command_line {
   height: 400px;
   width: 800px;
+  margin: 100px auto;
 }
-* body div.command_line_header {
+* body div.command_line .command_line_header {
   height: 20px;
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: row-reverse;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   padding: 0px 5px 0px 5px;
 }
-* body div.command_line_header div {
+* body div.command_line .command_line_header div {
   margin: 0 5px 0 5px;
-  color: white;
+  color: black;
 }
-* body div.command_line_body {
+* body div.command_line div.command_line_body {
   overflow: hidden scroll;
   height: 100%;
   padding: 6px;
-  background-color: white;
+  background-color: black;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
-* body div#command_line input {
-  width: 100vw;
+* body div.command_line div.command_line_body .command_line_banner .command_line_author {
+  color: white;
+}
+* body div.command_line div.command_line_body .command_line_banner p {
+  color: white;
+}
+* body div.command_line div.command_line_body #command_line .command_first_line {
+  color: white;
+}
+* body div.command_line div.command_line_body #command_line .command_first_line input {
+  width: 650px;
+  margin-left: 5px;
   border: none;
   outline: none;
   background: 0 0;
+  color: white;
+}
+* body div.command_line div.command_line_body #command_line .command_response {
+  color: white;
+  margin: 8px 0;
 }/*# sourceMappingURL=styles.css.map */
