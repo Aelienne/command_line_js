@@ -1,5 +1,7 @@
 // cibler le body pour qu'au click il y est une redirection sur l'input
 const COMMAND_BODY = document.getElementsByClassName("command_line_body");
+// cibler la command_line_header
+const COMMAND_HEADER = document.getElementsByClassName("command_line_header");
 // cibler la div pour y générer de nouveaux éléments html
 const NEW_COMMAND_LINE = document.getElementById("command_line");
 // cibler tout l'invit de command
@@ -11,6 +13,10 @@ const CLOSE_BUTTON = document.getElementById("button_fake_close");
 // init du tableau des commandes
 // Init du tableau de mes experiences
 const COMMAND_EXP = 0;
+// historique des INPUTS
+let inputHistory = [];
+// index actuel
+let currentInputIndex = -1;
 
 // document.addEventListener("mousemove", function (event) {
 //   console.log(event);
@@ -52,6 +58,10 @@ function newElementsResponse() {
     if (event.key === "Enter") {
       let inputUserValue = reference_to_input_user.value;
 
+      // Ajouter l'input actuel à l'historique
+      inputHistory.push(inputUserValue);
+      // Réinitialiser l'index actuel
+      currentInputIndex = inputHistory.length;
       // INJECTER DU TEXT DANS COMMAND RESPONSE
       let allCommandResponses = document.querySelectorAll(".command_response");
       switch (inputUserValue) {
@@ -66,20 +76,30 @@ function newElementsResponse() {
             creatCommandList()
           );
           break;
-        case "-clear":
+        case "clear":
           // Actualise le DOM pour clear le command_body
           window.location.reload();
+          break;
+        case "ls":
+          allCommandResponses[currentAnswerNumber].innerText =
+            "Vous êtes sur votre machine";
           break;
         default:
           allCommandResponses[currentAnswerNumber].innerText =
             "Ceci n'est pas une commande valide";
       }
-
+      console.log(inputUserValue);
       // NETTOYAGE AVANT PROCHAIN INPUT
       currentAnswerNumber++;
       reference_to_input_user.id = "";
       reference_to_input_user.disabled = true;
       newElementsResponse();
+    } else if (event.key === "ArrowUp") {
+      // recuperation de l'input dans l'historique
+      if (inputHistory.length > 0 && currentInputIndex > 0) {
+        currentInputIndex--;
+        reference_to_input_user.value = inputHistory[currentInputIndex];
+      }
     }
   });
 
@@ -89,7 +109,10 @@ function newElementsResponse() {
     }
   });
 }
+// deplacement de l'invit de command avec la souris dragAndDrop
+// COMMAND_HEADER.addEventListener("mousemove", function(event){
 
+// })
 // suppression de l'invit de command au click du button
 CLOSE_BUTTON.addEventListener("click", function (event) {
   event.preventDefault();
