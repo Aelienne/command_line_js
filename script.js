@@ -9,14 +9,23 @@ let currentAnswerNumber = 0;
 //fermeture au click de l'icone
 const CLOSE_BUTTON = document.getElementById("button_fake_close");
 // init du tableau des commandes
-const COMMAND_TAB = 0;
 // Init du tableau de mes experiences
 const COMMAND_EXP = 0;
 
-document.addEventListener("mousemove", function (event) {
-  console.log(event);
-});
+// document.addEventListener("mousemove", function (event) {
+//   console.log(event);
+// });
 
+function creatCommandList() {
+  const NEW_COMMAND_LIST_UL = document.createElement("ul");
+
+  for (let i = 0; i < 5; i++) {
+    const NEW_COMMAND_LIST_LI = document.createElement("li");
+    NEW_COMMAND_LIST_UL.appendChild(NEW_COMMAND_LIST_LI);
+  }
+
+  return NEW_COMMAND_LIST_UL;
+}
 function newElementsResponse() {
   const NEW_Div1 = document.createElement("div");
   const NEW_Div2 = document.createElement("div");
@@ -49,9 +58,13 @@ function newElementsResponse() {
         case "h":
         case "-h":
         case "help":
+        case "-help":
         case "--help":
           allCommandResponses[currentAnswerNumber].innerText =
-            "Ceci est l'aide de mon invite, pour accéder à toutes les commandes : ";
+            "Voici les commandes : ";
+          allCommandResponses[currentAnswerNumber].appendChild(
+            creatCommandList()
+          );
           break;
         case "-clear":
           // Actualise le DOM pour clear le command_body
