@@ -76,7 +76,7 @@
   color: white;
 }
 * body div.command_line div.command_line_body #command_line .command_first_line input {
-  width: 650px;
+  width: 80%;
   margin-left: 5px;
   border: none;
   outline: none;
