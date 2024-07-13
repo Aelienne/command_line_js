@@ -24,9 +24,20 @@ let currentInputIndex = -1;
 
 function creatCommandList() {
   const NEW_COMMAND_LIST_UL = document.createElement("ul");
-
-  for (let i = 0; i < 5; i++) {
+  const LIST_COMMAND = [
+    "help : vous affiches toutes les commmandes possibles",
+    "clear : vous permets de nettoyer toutes les commandes précédentes",
+    "ls : vous donne votre position",
+    "experiences : affiche mes expériences",
+    "projets : affiche mes projets",
+    "hobbies : affiche mes centre d'intérêts",
+    "get my CV : permet de télécharger mon CV",
+  ];
+  for (let i = 0; i < 7; i++) {
     const NEW_COMMAND_LIST_LI = document.createElement("li");
+    const NEW_CODE_TAG = document.createElement("code");
+    NEW_COMMAND_LIST_LI.appendChild(NEW_CODE_TAG);
+    NEW_CODE_TAG.innerText = LIST_COMMAND[i];
     NEW_COMMAND_LIST_UL.appendChild(NEW_COMMAND_LIST_LI);
   }
 
@@ -70,8 +81,6 @@ function newElementsResponse() {
         case "help":
         case "-help":
         case "--help":
-          allCommandResponses[currentAnswerNumber].innerText =
-            "Voici les commandes : ";
           allCommandResponses[currentAnswerNumber].appendChild(
             creatCommandList()
           );
@@ -85,8 +94,9 @@ function newElementsResponse() {
             "Vous êtes sur votre machine";
           break;
         default:
-          allCommandResponses[currentAnswerNumber].innerText =
-            "Ceci n'est pas une commande valide";
+          allCommandResponses[
+            currentAnswerNumber
+          ].innerText = `"${inputUserValue}" n'est pas reconnu comme une commande interne ou une commande externe, un programme exploitable ou un fichier de commandes. Tapez la commande "help" pour afficher une liste des commandes disponibles.`;
       }
       console.log(inputUserValue);
       // NETTOYAGE AVANT PROCHAIN INPUT
